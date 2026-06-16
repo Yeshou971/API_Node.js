@@ -15,7 +15,7 @@ module.exports= (req, res) => {
 
     const resetToken = crypto.randomBytes(32).toString('hex')
     user.resetPasswordToken = resetToken
-    user.resetPasswordExpires = Date.now() + 3600000 // 1 hour
+    user.resetPasswordExpires = Date.now() + 1800000 // 30 minutes
 
     await user.save()
 
@@ -29,7 +29,7 @@ module.exports= (req, res) => {
         <p>Vous avez demandé à réinitialiser votre mot de passe.</p>
         <p>Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe :</p>
         <a href="${resetUrl}" target="_blank">Réinitialiser le mot de passe</a>
-        <p>Ce lien expire dans 1 heure.</p>
+        <p>Ce lien expire dans 30 minutes.</p>
       `
     })
 
