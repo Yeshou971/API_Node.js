@@ -1,4 +1,4 @@
-const MidlewareRegister = (req, res, next) => {
+const MiddlewareRegister = (req, res, next) => {
 
     const { firstname, email, password, confirmPassword } = req.body
 
@@ -26,4 +26,4 @@ const MidlewareRegister = (req, res, next) => {
     next()
 }
 
-module.exports = MidlewareRegister
+module.exports = MiddlewareRegister
