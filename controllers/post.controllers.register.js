@@ -3,16 +3,12 @@ const argon2 = require('../lib/argon2')
 const prisma = require('../lib/prisma')
 
 module.exports = async (req, res) => {
-
-  // On récupère les informations envoyées par l'utilisateur.
   const { name, lastName, email, password } = req.body
-
-  // On rassemble prénom et nom pour stocker un nom complet proprement.
   const fullName = `${name || ''} ${lastName || ''}`.trim()
 
   try {
     const hash = await argon2.hashPassword(password)
-    
+
     await prisma.user.create({
       data: {
         name: fullName || name,

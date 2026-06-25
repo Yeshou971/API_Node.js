@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const review = await prisma.review.create({
       data: {
         name: author,
-        date,
+        date: date ? new Date(date) : new Date(),
         rating,
         description
       }
